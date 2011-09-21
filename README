@@ -1,0 +1,21 @@
+This project is a collection of utilities to make it easier to write jQuery Mobile clients using coffeescript and haml.  It grew out of a Phonegap-jQuery Mobile iPhone/Android app project of the multipage variety, so has this orientation, though you can use the haml and templating helpers with anything.
+
+Why coffee and haml?
+
+jQuery Templates is one templating solution for dynamic web/mobile apps, but has its limitations, particularly when the logic gets complicated.  In these cases, one often resorts to writing template code in Javascript, but this becomes very difficult to visualize very quickly.  Coffeescript here documents partially solve this problem, you can lay out your element like a template, but since its really inside a javascript function, you aren't limited by a templating package.  
+
+There is one catch with regular html, however.  You will often want to abstract your html elements into functions.  If they are containers, however, you have to pass their contents in because of the closing tags, and things quickly become unintelligible again.  
+
+Unless of course, you resort to haml, and then your problems are solved.
+
+An illustration:
+
+<div data-role="page"> 
+  <div data-role="header">...</div> 
+	<div data-role="content">...</div> 
+	<div data-role="footer">...</div> 
+</div> 
+
+
+Specifically, there are:
+- utility methods to make it easier to use 
