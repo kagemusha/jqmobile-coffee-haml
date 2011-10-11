@@ -1,7 +1,27 @@
+var MULTI_END, MULTI_START, POPUP_CLASSES, correctIndents, haTag, hamlHtml, hamlOptionStr, log, multilineHaml, popupMsg, popupTmpl, yesnoChoiceTmpl;
+log = function() {
+  var array, i, msg, _ref;
+  try {
+    msg = arguments[0];
+    if (arguments.length > 1) {
+      msg += ": ";
+      array = new Array();
+      for (i = 1, _ref = arguments.length - 1; 1 <= _ref ? i <= _ref : i >= _ref; 1 <= _ref ? i++ : i--) {
+        array.push(JSON.stringify(arguments[i]));
+      }
+      msg += array.join(",");
+      return console.log(msg);
+    } else {
+      return console.log(msg);
+    }
+  } catch (e) {
+    return console.log("log fn err: " + e);
+  }
+};
 /*
   function to convert block of haml to html
   see jqm-haml.coffee for examples
-*/var DATA_ROLE, MULTI_END, MULTI_START, backButton, button, checkbox, choiceBtn, choiceButtons, choiceGroup, content, controlgroup, correctIndents, delProp, div, fieldcontain, fieldset, form, haTag, hamlHtml, hamlOptionStr, idSel, input, label, link, listview, multilineHaml, navbar, page, pageFooter, pageHeader, radio, refreshPage, resetChoices, rightButton, yesnoChoiceTmpl;
+*/
 hamlHtml = function(haml) {
   return Haml(correctIndents(haml))();
 };
@@ -136,6 +156,39 @@ yesnoChoiceTmpl = function(label, fieldName, yesChecked, cgOptions) {
   haml = "" + (controlgroup(label, cgOptions)) + "\n    " + (radio("Yes", fieldName, "yes", "true", {}, yesChecked)) + "\n    " + (radio("No", fieldName, "no", "false", {}, !yesChecked));
   return multilineHaml(haml);
 };
+POPUP_CLASSES = ".popup.ui-loader.ui-overlay-shadow.ui-body-a.ui-corner-all";
+popupTmpl = function(msg) {
+  var haml;
+  haml = "" + POPUP_CLASSES + "\n  %h1 " + msg;
+  return multilineHaml(haml);
+};
+popupMsg = function(msg, delay) {
+  var msgDiv, msgHTML, wait;
+  $(".popup").remove();
+  wait = delay || 800;
+  msgHTML = hamlHtml(popupTmpl(msg));
+  msgDiv = $(msgHTML).css({
+    top: window.pageYOffset + 100
+  }).appendTo("body");
+  if (delay !== 0) {
+    return msgDiv.delay(wait).fadeOut(400, function() {
+      return $(this).remove();
+    });
+  }
+};popupMsg = function(msg, delay) {
+  var msgDiv, msgHTML, wait;
+  $(".popup").remove();
+  wait = delay || 800;
+  msgHTML = hamlHtml(popupTmpl(msg));
+  msgDiv = $(msgHTML).css({
+    top: window.pageYOffset + 100
+  }).appendTo("body");
+  if (delay !== 0) {
+    return msgDiv.delay(wait).fadeOut(400, function() {
+      return $(this).remove();
+    });
+  }
+};
 DATA_ROLE = "data-role";
 listview = function(options) {
   if (options == null) {
@@ -157,7 +210,7 @@ link = function(label, href, options, reverse) {
   if (reverse == null) {
     reverse = false;
   }
-  options["href"] = href;
+  options["href"] = idSel(href);
   if (reverse) {
     if (!href || (href = "#")) {
       options["data-direction"] = 'reverse';
@@ -361,6 +414,10 @@ pageHeader = function(title, position, options) {
   options["data-position"] = position;
   return "" + (div(options)) + "\n    %h1 " + title;
 };
+refreshListById = function(id, template, objs, options) {
+  refreshTmplById(id, template, objs, options);
+  return listviewRefresh(id);
+};
 pageFooter = function(fixed, options) {
   if (fixed == null) {
     fixed = true;
@@ -404,16 +461,26 @@ refreshPage = function(page) {
 
   }
 };
+listviewRefresh = function(list) {
+  var listSel;
+  listSel = idSel(list);
+  try {
+    $(listSel).listview("init");
+  } catch (e) {
+
+  }
+  try {
+    return $(listSel).listview("refresh");
+  } catch (e) {
+
+  }
+};
 idSel = function(id) {
   if (!id || id.length === 0) {
     return "";
   }
   if (id[0] === "#") {
     return id;
-  } else {
-    return "#" + id;
-  }
-};   return id;
   } else {
     return "#" + id;
   }
@@ -427,7 +494,6 @@ appendTmpl = function(containers, templateFn, data, options) {
   return $(containers).append(elems);
 };
 refreshTmplById = function(id, templateFn, data, options) {
-  log("refreshTmplById", idSel(id));
   return refreshTmpl("" + (idSel(id)), templateFn, data, options);
 };
 refreshTmpl = function(containers, templateFn, data, options) {
