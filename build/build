@@ -1,0 +1,1 @@
+coffee -j ../js/jqm-haml.js  -bc ../lib/*.coffee
