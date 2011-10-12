@@ -167,7 +167,7 @@ One caveat with multiline widgets.  Since the here document only will indent the
 	        #{ radio "Yes", fieldName, "yes", "true", {}, yesChecked }
     	    #{ radio "No", fieldName, "no", "false", {}, !yesChecked }
 	    """
-	    **multilineHaml** haml
+	    multilineHaml haml
 	
 # Files
 
