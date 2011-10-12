@@ -1,4 +1,4 @@
-var MULTI_END, MULTI_START, POPUP_CLASSES, correctIndents, haTag, hamlHtml, hamlOptionStr, log, multilineHaml, popupMsg, popupTmpl, yesnoChoiceTmpl;
+var DATA_ROLE, MULTI_END, MULTI_START, POPUP_CLASSES, appendTmpl, backButton, button, checkbox, choiceBtn, choiceButtons, choiceGroup, content, controlgroup, correctIndents, delProp, div, fieldcontain, fieldset, form, genElems, haTag, hamlHtml, hamlOptionStr, idSel, input, label, link, listview, listviewRefresh, log, multilineHaml, navbar, page, pageFooter, pageHeader, popupMsg, popupTmpl, radio, refreshListById, refreshPage, refreshTmpl, refreshTmplById, resetChoices, rightButton, yesnoChoiceTmpl;
 log = function() {
   var array, i, msg, _ref;
   try {
@@ -163,19 +163,6 @@ popupTmpl = function(msg) {
   return multilineHaml(haml);
 };
 popupMsg = function(msg, delay) {
-  var msgDiv, msgHTML, wait;
-  $(".popup").remove();
-  wait = delay || 800;
-  msgHTML = hamlHtml(popupTmpl(msg));
-  msgDiv = $(msgHTML).css({
-    top: window.pageYOffset + 100
-  }).appendTo("body");
-  if (delay !== 0) {
-    return msgDiv.delay(wait).fadeOut(400, function() {
-      return $(this).remove();
-    });
-  }
-};popupMsg = function(msg, delay) {
   var msgDiv, msgHTML, wait;
   $(".popup").remove();
   wait = delay || 800;
