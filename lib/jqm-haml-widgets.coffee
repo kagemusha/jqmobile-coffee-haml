@@ -8,9 +8,12 @@ yesnoChoiceTmpl = (label, fieldName, yesChecked=false, cgOptions={}) ->
   multilineHaml haml
 
 
+#edit to change popup style
+POPUP_CLASSES =  ".popup.ui-loader.ui-overlay-shadow.ui-body-a.ui-corner-all"
+
 popupTmpl = (msg) ->
   haml = """
-    .popup.ui-loader.ui-overlay-shadow.ui-body-b.ui-corner-all
+    #{POPUP_CLASSES}
       %h1 #{msg}
   """
   multilineHaml haml

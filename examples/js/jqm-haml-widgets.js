@@ -1,4 +1,4 @@
-var popupMsg, popupTmpl, yesnoChoiceTmpl;
+var POPUP_CLASSES, popupMsg, popupTmpl, yesnoChoiceTmpl;
 yesnoChoiceTmpl = function(label, fieldName, yesChecked, cgOptions) {
   var haml;
   if (yesChecked == null) {
@@ -14,9 +14,10 @@ yesnoChoiceTmpl = function(label, fieldName, yesChecked, cgOptions) {
   haml = "" + (controlgroup(label, cgOptions)) + "\n    " + (radio("Yes", fieldName, "yes", "true", {}, yesChecked)) + "\n    " + (radio("No", fieldName, "no", "false", {}, !yesChecked));
   return multilineHaml(haml);
 };
+POPUP_CLASSES = ".popup.ui-loader.ui-overlay-shadow.ui-body-a.ui-corner-all";
 popupTmpl = function(msg) {
   var haml;
-  haml = ".popup.ui-loader.ui-overlay-shadow.ui-body-b.ui-corner-all\n  %h1 " + msg;
+  haml = "" + POPUP_CLASSES + "\n  %h1 " + msg;
   return multilineHaml(haml);
 };
 popupMsg = function(msg, delay) {

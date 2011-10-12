@@ -28,8 +28,6 @@ makePages = ->
 
 
 callbacks = ->
-
-
   ###
   calls fn specified in link. used instead of jqm pagebeforechange callback
   when needs variables in link, e.g. hotel id
