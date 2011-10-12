@@ -1,4 +1,4 @@
-%h1 Intro
+<h1>Intro</h1>
 
 This project is a collection of utilities to make it easier to write jQuery Mobile templates using coffeescript and haml.  It grew out of a Phonegap-jQuery Mobile app.  I was using JQuery templates previously but don't like having to use html (because of phonegap) and had some problems when dynamic page logic got complicated.  On the other hand, generating pages with Javascript makes it very difficult to see what's going on -- unless you use Coffeescript here documents…
 
