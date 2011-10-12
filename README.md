@@ -1,4 +1,4 @@
-<h1>Intro</h1>
+## Intro
 
 This project is a collection of utilities to make it easier to write jQuery Mobile templates using coffeescript and haml.  It grew out of a Phonegap-jQuery Mobile app.  I was using JQuery templates previously but don't like having to use html (because of phonegap) and had some problems when dynamic page logic got complicated.  On the other hand, generating pages with Javascript makes it very difficult to see what's going on -- unless you use Coffeescript here documents…
 
@@ -63,12 +63,12 @@ You can use haml-util and templating separately for a haml templating solution i
 In addition jqm-util has some useful jquery mobile utilities not dependent of the rest of the library.
 
 
-When to Use:
+## When to Use
 1. you want to use haml and your environment doesn't support it (but does support javascript)
 2. you benefit from having your templates within javascript (can use with node.js for example)
 3. you don't have access to other template solutions like rails erb
 
-Some other Benefits:
+## Some other Benefits
 
 1. everything is in javascript so can be easier to manipulate/do complex logic than other templating solutions. also you can specify constants for both your design elements and logic
 
@@ -83,7 +83,7 @@ pageTmpl = (pageData, header, content) ->
 which requires you build and generate separate header and content templates for each page.  This is alot messier than the haml solution, which lets you reuse but still groups pages together.
 
 
-%h1 Installation
+## Installation
 
 Download and include the jqm-haml.js file from your html doc:
 
@@ -92,11 +92,11 @@ Download and include the jqm-haml.js file from your html doc:
 Or build and include files separately.
 
 
-%h1 Building
+## Building
 
 Use the build command to combine all the .coffee files into one js file.  Or build individual files using coffeescript's coffee command.
 
-%h1 Coffeescript here documents
+## Coffeescript here documents
 
 Coffeescript here documents make it easy to write multiline strings like html pages. Here documents are delimited by """.  Variables can be embedded using #{variable}, making it easy to write dynamic docs.  For example a div containing a dynamically assigned name:
 
@@ -115,7 +115,7 @@ nameDiv = function(name) {
 
 
 
-%h1 Tasks
+## Tasks
 
 Building html pages/elements:
 
@@ -148,7 +148,7 @@ Refreshing elements:
 
 
 
-%h1 Building Widgets 
+## Building Widgets 
 
 Building widgets is similar to building pages but you will generally return haml and let the widget container run hamlHtml().
 
@@ -177,7 +177,7 @@ There is also one caveat with multiline widgets.  Since the here document only w
 	    multilineHaml haml
 
 	
-%h1 Files
+## Files
 
 haml-util.coffee: basic functionality for using haml and haml components.  Depends on haml.js
 jqm-haml.coffee: basic wrappers for jqmobile elements such as pages, headers, listviews. Depends on haml-util.js, jquery.mobile-xx.js, underscore.js
@@ -186,10 +186,8 @@ jqm-util.coffee: some useful jquerymobile utilities such as page refresh.  Depen
 templating.coffee: basic templates mechanism.  Depends on jquery.js
 debug.js: debuggins utilities.  Depends on library including JSON.stringify 
 
-%h1 To do
+## To do
 
 	jqm-haml.coffee is far from complete.  I encourage people to add wrappers for common jquerymobile design elements.  Also welcome more higher-level widgets.
 	
 	I haven't namespaced.  Encourage suggestions.
-
-	
