@@ -174,12 +174,12 @@ There is also one caveat with multiline widgets.  Since the here document only w
 	
 # Files
 
-haml-util.coffee: basic functionality for using haml and haml components.  Depends on haml.js
-jqm-haml.coffee: basic wrappers for jqmobile elements such as pages, headers, listviews. Depends on haml-util.js, jquery.mobile-xx.js, underscore.js
-jqm-haml-widgets.coffee: some higher-level widgets. Depends on jqm-haml.js
-jqm-util.coffee: some useful jquerymobile utilities such as page refresh.  Depends on jquery.mobile-xx.js.
-templating.coffee: basic templates mechanism.  Depends on jquery.js
-debug.js: debuggins utilities.  Depends on library including JSON.stringify 
+- haml-util.coffee: basic functionality for using haml and haml components.  Depends on haml.js
+- jqm-haml.coffee: basic wrappers for jqmobile elements such as pages, headers, listviews. Depends on haml-util.js, jquery.mobile-xx.js, underscore.js
+- jqm-haml-widgets.coffee: some higher-level widgets. Depends on jqm-haml.js
+- jqm-util.coffee: some useful jquerymobile utilities such as page refresh.  Depends on jquery.mobile-xx.js.
+- templating.coffee: basic templates mechanism.  Depends on jquery.js
+- debug.js: debuggins utilities.  Depends on library including JSON.stringify 
 
 # To do
 
